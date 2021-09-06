@@ -1,0 +1,25 @@
+{
+  "name": "10-employee-profile-generator",
+  "version": "1.0.0",
+  "description": "A node.js command-line application that takes information about employees and then generates a HTML webpage with a summary of each employee.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TLH3810/10-Employee-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TLH3810/10-Employee-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/TLH3810/10-Employee-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.1.0"
+  }
+}
