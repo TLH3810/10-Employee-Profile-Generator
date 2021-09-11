@@ -70,18 +70,34 @@ function teamMenu() {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
             team.push(manager);
             ids.push(answers.managerId);
-            //addTeamMembers();
+            addTeamMembers();
         });
-
+    }
+//funciton to add team members funciton addTeamMembers(){}
+    function addTeamMembers(){
+        inquirer.prompt([
+            { type: "list",
+            name: "teamMemberChoice",
+            message: "Which team member role would you like to add?",
+            choices:[
+                "Engineer",
+                "Intern",
+                "No more team members to add"
+            ]}
+        ]).then(answer => {
+            switch(answer.teamMemberChoice){
+                case"Engineer": addEngineer(); break;
+                case "Intern": addIntern(); break;
+                default writeTeamToFile();
+            }
+        });
     }
 
-    //funciton to add team members funciton addTeamMembers(){}
+    //funciton to add engineers to a team addEngineer();
+    
+    //funciton to add inters to a team addIntern();
 
-    //funciton to add engineers to a team
-
-    //funciton to add inters to a team
-
-    //funciton to build a team
+    //funciton to build a team writeTeamToFile()
 
     createManagerTeam();
 }
