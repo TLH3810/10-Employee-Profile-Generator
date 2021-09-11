@@ -13,7 +13,7 @@ const ids = [];
 function teamMenu() {
 
     //funciton to create a manager
-    funciton createManagerTeam(){
+    function createManagerTeam(){
         console.log("Please input Manager info for team");
         inquirer.prompt([
             {
@@ -33,8 +33,7 @@ function teamMenu() {
                     const pass = answer.match(
                         //decimal or numeric 
                         /^[1-9]\d*$/);
-                    if (pass) {
-                        return true;
+                    if (pass) { return true;
                     }
                     return "Must enter at number grater then zero.";
                 }
@@ -66,16 +65,16 @@ function teamMenu() {
                     }
                     return "Must enter at number grater then zero.";
                 }
-            },
-        ])
-        .then(answers =>{
+            }
+        ]).then(answers => {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
             team.push(manager);
             ids.push(answers.managerId);
-            addTeamMembers();
+            //addTeamMembers();
         });
+
     }
-    
+
     //funciton to add team members funciton addTeamMembers(){}
 
     //funciton to add engineers to a team
@@ -84,5 +83,6 @@ function teamMenu() {
 
     //funciton to build a team
 
-
+    createManagerTeam();
 }
+teamMenu();
