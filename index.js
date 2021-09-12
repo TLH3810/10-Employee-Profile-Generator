@@ -143,9 +143,60 @@ function teamMenu() {
     }
     
     //funciton to add inters to a team addIntern();
-
+function addIntern(){
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is the intern's name?",
+            validate: answer => { if(answer !== ""){return true;}
+            return "You must enter at least one character.";}
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "What is the intern's id?",
+            validate: answer =>{
+                const pass = answer.match(
+                    //decimal or numeric 
+                    /^[1-9]\d*$/);
+                if (pass) {return true;}
+                return "Must enter at number grater then zero.";
+            }
+        },
+        {
+            type: "input",
+            name: "einternEmail",
+            message: "What is the email of the intern?",
+            validate: answer => {
+                const pass = answer.match(
+                    //checking for a string@string.string
+                    /\S+@\S+\.\S+/);
+                if (pass) {return true;}
+                return "Must enter a valid email address.";
+            }
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What is the name of the intern's school?",
+            validate: answer => { if(answer !== ""){return true;}
+            return "You must enter at least one character.";}
+        }
+    ]).then(answers =>{
+            const intern = new Intern(answer.internName,answer.internId, answer.internEmail, answer.internSchool);
+            team.push(intern);
+            ids.push(answers.internId);
+            addTeamMembers();
+        });
+}
     //funciton to build a team writeTeamToFile()
-
+function writeTeamToFile(){
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+      }
+      fs.writeFileSync(outputPath, render(team), "utf-8");
+}
     createManagerTeam();
 }
 teamMenu();
