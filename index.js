@@ -94,6 +94,53 @@ function teamMenu() {
     }
 
     //funciton to add engineers to a team addEngineer();
+    function addEngineer(){
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "engineerName",
+                message: "What is the engineer's name?",
+                validate: answer => { if(answer !== ""){return true;}
+                return "You must enter at least one character.";}
+            },
+            {
+                type: "input",
+                name: "engineerId",
+                message: "What is the engineer's id?",
+                validate: answer =>{
+                    const pass = answer.match(
+                        //decimal or numeric 
+                        /^[1-9]\d*$/);
+                    if (pass) {return true;}
+                    return "Must enter at number grater then zero.";
+                }
+            },
+            {
+                type: "input",
+                name: "engineerEmail",
+                message: "What is the email of the engineer?",
+                validate: answer => {
+                    const pass = answer.match(
+                        //checking for a string@string.string
+                        /\S+@\S+\.\S+/);
+                    if (pass) {return true;}
+                    return "Must enter a valid email address.";
+                }
+            },
+            {
+                type: "input",
+                name: "engineerGitHub",
+                message: "What is the GitHun username of the engineer?",
+                validate: answer => { if(answer !== ""){return true;}
+                return "You must enter at least one character.";}
+            }
+        ]).then(answers =>{
+            const engineer = new Engineer(answer.engineerName,answer.engineerId, answer.engineerEmail, answer.engineerGitHub);
+            team.push(engineer);
+            ids.push(answers.engineerId);
+            addTeamMembers();
+        });
+    }
     
     //funciton to add inters to a team addIntern();
 
