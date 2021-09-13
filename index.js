@@ -3,8 +3,10 @@ const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const inquirer = require("inquirer");
 const fs = require("fs");
-const pats = require("path");
+const path = require("path");
 
+const OUTPUT_DIR = path.resolve(__dirname, "")
+const pathOutput = path.join(OUTPUT_DIR,"./dist/index.html")
 const render = require("./src/index-template");
 
 const team = [];
@@ -195,7 +197,7 @@ function writeTeamToFile(){
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR)
       }
-      fs.writeFileSync(outputPath, render(team), "utf-8");
+      fs.writeFileSync(pathOutput, render(team), "utf-8");
 }
     createManagerTeam();
 }
