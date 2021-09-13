@@ -15,7 +15,7 @@ describe("Manager Tests ", ()=>{
         it ("Can set the office number", () => {
             const testValue = 83;
             const result = new Manager("Smith",1,"test1@test1.com",testValue);
-            expect(result.officeNumber).toequal(testValue);
+            expect(result.officeNumber).toEqual(testValue);
         });
     });
 });
