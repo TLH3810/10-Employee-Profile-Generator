@@ -11,8 +11,8 @@ describe("Intern Tests", ()=>{
     });
     describe("schoolName", ()=> {
         it ("Can get the school by name", () => {
-            const testValue = OSU;
-            const result = new Manager("Wallas",2,"testI1@testI1.com",testValue);
+            const testValue = "OSU";
+            const result = new Intern("Wallas",2,"testI1@testI1.com",testValue);
             expect(result.getSchool()).toBe(testValue);
         });
     });

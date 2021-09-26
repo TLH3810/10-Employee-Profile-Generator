@@ -4,7 +4,7 @@
   "description": "A node.js command-line application that takes information about employees and then generates a HTML webpage with a summary of each employee.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
